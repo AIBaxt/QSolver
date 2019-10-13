@@ -16,7 +16,6 @@ int getit(char * line, int nline){
 		if (size == nline && line[nline-1] != '\0') {
 			error = 2; // didn't read the whole line, got cut off, so no null terminator
 		}
-	
 	} 
 	return error;
 }
