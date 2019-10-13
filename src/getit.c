@@ -4,21 +4,8 @@
 #include <string.h>
 
 int getit(char * line, int nline){
-    /*char * token = strtok(line, " ");
-    double qNums[3];
-    int i = 0;
-    while(token !=NULL){
-        qNums[i] = atof(token);
-        token = strtok(NULL, " ");
-        i++;
-    }
-	*/
-
-
 	int error = 0; 
 	int size = 0;
-
-	line = (char *) malloc(nline * sizeof(char));
 
 	if (fgets(line, nline, stdin) == NULL){
 		error = 1; // no input, just an empty line
@@ -31,6 +18,5 @@ int getit(char * line, int nline){
 		}
 	
 	} 
-	
 	return error;
 }
