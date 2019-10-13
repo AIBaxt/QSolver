@@ -13,5 +13,5 @@ int main(int argc, char *argv[]){
     do{
         printf("Enter three roots separated by spaces or type q to exit: ");
         getit(line, size);
-    }while(strncmp(line, "q", 1) != 0); //while first character of line is not q
+    }while(strncmp(line, "q", 1) != 0 && strncmp(line, "Q", 1) != 0); //while first character of line is not q/Q
 }
