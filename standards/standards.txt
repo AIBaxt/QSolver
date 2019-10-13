@@ -1,0 +1,34 @@
+IDE of choice: Visual Studio Code. VS Code is a lightweight IDE from Microsoft with extensions
+for C and C++ syntax. 
+
+General:
+	Avoid global variables as much as possible.
+	Indent for readability. An indent is one tab.
+	Comments should be placed on the line before.
+	Strive for readability most of all.
+	Avoid white space except for when it aids in readability and between function declarations.
+
+Formatting:
+	Function braces:
+		void myFunction(){
+
+		}
+	if, else, while, etc:
+		if(thing)
+		{
+			//stuff
+		}
+
+Variable Declarations
+	Local variables should be declared in lower camel case. (int myInt)
+	Names of variable names should be kept clear and concise.
+	Constants should be declared in all caps. (MAX_BUFFER_SIZE)
+	Variable declaration happens preferably at the top of a function with similar types declared on the same line unless it needs to be initialized or becomes excessive.
+
+Functions:
+	Function names should be upper Camel Case. (void MyFoo)
+	Functions should not be so long that they require scrolling through. 
+	Functions should do exactly what the name says they do and nothing else.
+	If there's an opportunity to refactor by pulling out code and creating a new function, do so.
+	
+
