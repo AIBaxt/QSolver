@@ -5,11 +5,22 @@
 int validate(char * line, int nline, double * a, double * b, double * c){
  
 	int error = 0;
-	char checkForQ;
-	char checkForHelp[100];
+	//char checkForQ;
+	//char checkForHelp[100];
 
+	if(strncmp(line, "q", 1) == 0 || strncmp(line, "Q", 1) == 0){
+		error = 2; //User is requesting to exit
+	}
+	else if(strncmp(line, "h", 1) == 0 || strncmp(line, "H", 1) == 0){
+		error = 3; //User is requesting help menu
+	}
+	else if(sscanf(line, "%lf %lf %lf", a, b, c) != 3){
+		error = 1; // Either no input or did not receive all 3 numbers
+	}
+
+	return error;
 	
-	if (sscanf(line, "%f %f %f", a, b, c) != 3) // did not receive 3 numbers
+/*	if (sscanf(line, "%lf %lf %lf", a, b, c) != 3) // did not receive 3 numbers
 		error = 1;
 	
 	// if there is a character in the first place, check it for 'q' for quit
@@ -25,10 +36,10 @@ int validate(char * line, int nline, double * a, double * b, double * c){
 		if (strcasecmp(checkForHelp, "help") == 0)
 			error = 3;  // again, easiest way
 	}
-
+*/
 	
 	
 
 	// error = 0 on all 3 numbers received, = 1 if trash line, = 2 on quit, = 3 on help
-	return error;   
+	//return error;   
 }
