@@ -30,5 +30,5 @@ int main(int argc, char *argv[]){
 
 
 void displayHelp(){
-
+//Here we would display example input and output to the user.
 }
