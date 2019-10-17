@@ -42,7 +42,7 @@ int main(int argc, char *argv[]){
             errFlag2 = qsolve(a,b,c,&x1,&x2);
 
             if (errFlag2 == 1)
-                printf("Roots undefined: complex number");
+                printf("Roots undefined: complex number\n");
             else
             {
                 endDisplay(x1,x2);

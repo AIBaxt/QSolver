@@ -7,5 +7,5 @@ void initialDisplay()
     printf("         QUADSOLVER          \n");
     printf("            v0.9             \n");
     printf("*****************************\n");
-    printf("\n\n");
+    printf("\n");
 }
