@@ -20,7 +20,7 @@ int validate(char * line, int nline, double * a, double * b, double * c){
 
 	if (error == 0) // I have all three numbers, no issues so far
 	{
-		if (*a > FLT_MAX || *a < FLT_MIN || *b > FLT_MAX || *b < FLT_MIN || *c > FLT_MAX || *c < FLT_MIN)
+		if (*a > FLT_MAX || *a < -FLT_MAX || *b > FLT_MAX || *b < -FLT_MAX || *c > FLT_MAX || *c < -FLT_MAX)
 			error = 4; // number not within FLT range
 
 		if (isinf(*a) || isinf(*b) || isinf(*c))

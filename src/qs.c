@@ -33,9 +33,25 @@ int main(int argc, char *argv[]){
         {
            displayHelp();
         }
-        else if (errFlag1 >= 4)
+        else if (errFlag1 == 4)
         {
-            printf("ERROR: A number was either INF, NAN, Subnormal, beyond float, or A was 0");
+            printf("ERROR: A, B, or C were not within the range of Float type\n");
+        }
+        else if (errFlag1 == 5)
+        {
+            printf("ERROR: A, B, or C was infinite\n");
+        }
+        else if (errFlag1 == 6)
+        {
+            printf("ERROR: A, B, or C was nan\n");
+        }
+        else if (errFlag1 == 7)
+        {
+            printf("ERROR: A, B, or C was subnormal\n");
+        }
+        else if (errFlag1 == 8)
+        {
+            printf("ERROR: A was 0, not quadratic equation\n");
         }
         else if (errFlag1 == 0)
         {
