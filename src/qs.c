@@ -33,6 +33,10 @@ int main(int argc, char *argv[]){
         {
            displayHelp();
         }
+        else if (errFlag1 == 1)
+        {
+            printf("ERROR: No command or a, b, and c in line received\n");
+        }
         else if (errFlag1 == 4)
         {
             printf("ERROR: A, B, or C were not within the range of Float type\n");
