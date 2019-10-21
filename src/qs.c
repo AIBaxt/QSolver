@@ -8,7 +8,8 @@
 #include "loopDisplay.h"
 #include "endDisplay.h"
 
-void displayHelp();
+void DisplayHelp();
+void DisplayErrors(int errFlag);
 
 int main(int argc, char *argv[]){
     //setup for retrieving input
@@ -28,51 +29,52 @@ int main(int argc, char *argv[]){
         getit(line, size);
 
         errFlag1 = (validate(line, size, &a, &b, &c));
-
-        if(errFlag1 == 3)
-        {
-           displayHelp();
+        if(errFlag1 !=0){
+            DisplayErrors(errFlag1);
         }
-        else if (errFlag1 == 1)
-        {
-            printf("ERROR: No command or a, b, and c in line received\n");
-        }
-        else if (errFlag1 == 4)
-        {
-            printf("ERROR: A, B, or C were not within the range of Float type\n");
-        }
-        else if (errFlag1 == 5)
-        {
-            printf("ERROR: A, B, or C was infinite\n");
-        }
-        else if (errFlag1 == 6)
-        {
-            printf("ERROR: A, B, or C was nan\n");
-        }
-        else if (errFlag1 == 7)
-        {
-            printf("ERROR: A, B, or C was subnormal\n");
-        }
-        else if (errFlag1 == 8)
-        {
-            printf("ERROR: A was 0, not quadratic equation\n");
-        }
-        else if (errFlag1 == 0)
-        {
+        else{
             errFlag2 = qsolve(a,b,c,&x1,&x2);
-
-            if (errFlag2 == 1)
+            if (errFlag2 == 1){
                 printf("Roots undefined: complex number\n");
-            else
-            {
-                endDisplay(x1,x2);
             }
-            
+            else{
+                endDisplay(x1,x2);
+             }
         }
     }
 }
 
-
-void displayHelp(){
-//Here we would display example input and output to the user.
+void DisplayErrors(int errFlag1){
+    switch (errFlag1){
+        case 1:
+            printf("ERROR: No command or a, b, and c in line received\n");
+            break;
+        case 3:
+             DisplayHelp();
+            break;
+        case 4:
+            printf("ERROR: A, B, or C were not within the range of Float type\n");
+            break;
+        case 5:
+            printf("ERROR: A, B, or C was infinite\n");
+            break;
+        case 6:
+            printf("ERROR: A, B, or C was nan\n");
+            break;
+        case 7:
+            printf("ERROR: A, B, or C was subnormal\n");
+            break;
+        case 8:
+            printf("ERROR: A was 0, not quadratic equation\n");
+            break;    
+    }
 }
+
+void DisplayHelp(){
+    double x1, x2;
+    printf("\nInputs are entered as 3 floats separated by spaces.\n");
+    printf("Example input: 1 4 2");
+    qsolve(1.0 , 4.2 , 2.0, &x1, &x2);
+    endDisplay(x1,x2);
+}
+
