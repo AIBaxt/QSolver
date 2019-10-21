@@ -39,7 +39,7 @@ int main(int argc, char *argv[]){
             }
             else{
                 endDisplay(x1,x2);
-             }
+            }
         }
     }
 }
@@ -50,7 +50,7 @@ void DisplayErrors(int errFlag1){
             printf("ERROR: No command or a, b, and c in line received\n");
             break;
         case 3:
-             DisplayHelp();
+            DisplayHelp();
             break;
         case 4:
             printf("ERROR: A, B, or C were not within the range of Float type\n");
