@@ -1,8 +1,11 @@
 #include <stdio.h>
-#include<stdlib.h>
+#include <stdlib.h>
 #include <string.h>
 #include <float.h>
 #include <math.h>
+
+int CheckPrecision(char *line);
+int PrecisionCounter(char line[]);
 
 int validate(char * line, int nline, double * a, double * b, double * c){
 	int error = 0;
@@ -16,7 +19,8 @@ int validate(char * line, int nline, double * a, double * b, double * c){
 	else if(sscanf(line, "%lf %lf %lf", a, b, c) != 3){
 		error = 1; // Either no input or did not receive all 3 numbers
 	}
-
+	//Once we know there's no errores, we can check the same line for precision
+	CheckPrecision(line);
 
 	if (error == 0) // I have all three numbers, no issues so far
 	{
@@ -45,4 +49,26 @@ int validate(char * line, int nline, double * a, double * b, double * c){
 4-8: Error in numbers (specifications in code)
 */
 	return error;
+}
+
+//Separates the 3 digits into indivdual strings after successful validation
+//returns 1 if PrecisionCounter counts > 4 digits
+//Possible errors: if first or second count returns 1, make sure it isn't overwritten by next check.
+int CheckPrecision(char *line){
+	int flag = 0;
+	char checkA[20], checkB[20], checkC[20];
+	sscanf(line, "%s %s %s", checkA, checkB, checkC);
+	PrecisionCounter(checkA);
+	PrecisionCounter(checkB);
+	PrecisionCounter(checkC);
+	printf("%s", checkA);
+
+	return flag;
+}
+//Counts each individual character after the "." and returns 1 if count > 4
+int PrecisionCounter(char line[]){
+	int flag = 0;
+	int count=0;
+
+	return flag;
 }
