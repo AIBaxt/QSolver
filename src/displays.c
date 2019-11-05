@@ -26,8 +26,8 @@ void endDisplay(double x1, double x2)
 void DisplayHelp(){
     double x1, x2;
     printf("\nInputs are entered as 3 floats separated by spaces.\n");
-    printf("Example input: 1 4 2");
-    qsolve(1.0 , 4.2 , 2.0, &x1, &x2);
+    printf("Example input: 1 2 1");
+    qsolve(1.0 , 2.0 , 1.0, &x1, &x2);
     endDisplay(x1,x2);
 }
 

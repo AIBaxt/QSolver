@@ -19,9 +19,8 @@ int validate(char * line, int nline, double * a, double * b, double * c){
 	else if(sscanf(line, "%lf %lf %lf", a, b, c) != 3){
 		error = 1; // Either no input or did not receive all 3 numbers
 	}
-	//Once we know there's no errores, we can check the same line for precision
-	CheckPrecision(line);
-
+	
+	
 	if (error == 0) // I have all three numbers, no issues so far
 	{
 		if (*a > FLT_MAX || *a < -FLT_MAX || *b > FLT_MAX || *b < -FLT_MAX || *c > FLT_MAX || *c < -FLT_MAX)
@@ -39,6 +38,8 @@ int validate(char * line, int nline, double * a, double * b, double * c){
 		if (*a == 0)
 			error = 8; // a is 0, not a legitimite quadratic formula
 
+		if (CheckPrecision(line) == 1)
+			printf("\nWARNING: More than 4 digits.  Answers may not be as accurate due to rounding errors.\n\n");
 	}
 
 	
@@ -46,29 +47,41 @@ int validate(char * line, int nline, double * a, double * b, double * c){
 /* ERROR CODE DESCRIPTION:
 1: Incorrect input
 2,3: User Request
-4-8: Error in numbers (specifications in code)
+4-9: Error in numbers (specifications in code)
 */
 	return error;
 }
 
 //Separates the 3 digits into indivdual strings after successful validation
 //returns 1 if PrecisionCounter counts > 4 digits
-//Possible errors: if first or second count returns 1, make sure it isn't overwritten by next check.
 int CheckPrecision(char *line){
 	int flag = 0;
 	char checkA[20], checkB[20], checkC[20];
 	sscanf(line, "%s %s %s", checkA, checkB, checkC);
-	PrecisionCounter(checkA);
-	PrecisionCounter(checkB);
-	PrecisionCounter(checkC);
-	printf("%s", checkA);
+	flag = PrecisionCounter(checkA);
+	if (flag == 0) // no point checking if flag is already 1
+		flag = PrecisionCounter(checkB);
+	if (flag == 0)
+		flag = PrecisionCounter(checkC);
 
 	return flag;
 }
 //Counts each individual character after the "." and returns 1 if count > 4
 int PrecisionCounter(char line[]){
 	int flag = 0;
-	int count=0;
+	int count = 0;
+
+	for (int a = 0; a < strlen(line); a++)
+	{
+		if (line[a] >= 48 && line[a] <= 57)
+			count++;
+
+		if (line[a] == 'e' || line[a] == 'E') //the numbers after should not affect this
+			a = strlen(line); 
+	}
+
+	if (count > 4)
+		flag = 1;
 
 	return flag;
 }
