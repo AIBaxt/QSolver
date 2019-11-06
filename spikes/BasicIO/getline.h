@@ -1,0 +1,1 @@
+void GetLine(char * line, int nLine);
