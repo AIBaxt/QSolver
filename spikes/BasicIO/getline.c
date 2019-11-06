@@ -7,5 +7,6 @@
 void GetLine(char * line, int nLine){
     printf("Enter string: ");
     fgets(line, nLine, stdin);
+    line[strcspn(line, "\n")] = 0; //Removes the \n character
 }
 

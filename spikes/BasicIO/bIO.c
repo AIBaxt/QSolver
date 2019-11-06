@@ -13,11 +13,12 @@ int main(){
     bool stop;
     int size = 20;
     char* line = malloc(sizeof (char*) * size);
+
     while(stop == false)
     {
         GetLine(line, size);
-        printf("You entered: %s", line);
-        if(!strcmp(line, "q\n") || !strcmp(line, "Q\n")){
+        printf("You entered: %s\n", line);
+        if(!strcmp(line, "q") || !strcmp(line, "Q")){
             stop = true;
         }
     }
