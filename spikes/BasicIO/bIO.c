@@ -1,6 +1,7 @@
 /*
 A very basic program that reads in a line from the user
-and spits it right back out into the console.
+and spits it right back out into the console until the
+user enters Q or q.
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,7 +17,7 @@ int main(){
     {
         GetLine(line, size);
         printf("You entered: %s", line);
-        if(strncmp(line, "q", 3) == 0 || strncmp(line, "Q", 3) == 0){
+        if(!strcmp(line, "q\n") || !strcmp(line, "Q\n")){
             stop = true;
         }
     }
