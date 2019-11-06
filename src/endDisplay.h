@@ -1,1 +1,0 @@
-void endDisplay(double q1, double q2);
