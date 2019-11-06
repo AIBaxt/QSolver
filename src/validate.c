@@ -42,7 +42,7 @@ int validate(char * line, int nline, double * a, double * b, double * c){
 		if (isnan(*a) || isnan(*b) || isnan(*c))
 			error = 6; // number is nan
 
-		if (!(isnormal(*a) && isnormal(*b) && isnormal(*c)))
+		if (!((isnormal(*a) || *a == 0) && (isnormal(*b) || *b == 0) && (isnormal(*c) || *c == 0)))
 			error = 7; // number is subnormal/denormal
 
 		if (*a == 0)
@@ -82,15 +82,26 @@ int CheckPrecision(char *line){
 int PrecisionCounter(char line[]){
 	int flag = 0;
 	int count = 0;
+	int zeroCount = 0;
 
 	for (int a = 0; a < strlen(line); a++)
 	{
-		if (line[a] >= 48 && line[a] <= 57)
-			count++;
+		if (!(count == 0 && line[a] == '0')){ // ignore initial zeroes, not important to count
+			if (line[a] >= 48 && line[a] <= 57){ // if 0-9
+				count++;
+				if (line[a] == '0') // counts zeroes to ensure only precision numbers matter
+					zeroCount++;
+				else
+					zeroCount = 0; // resets to zero if the zeroes in line affected precision
+				
+			}
+		}
 
 		if (line[a] == 'e' || line[a] == 'E') //the numbers after should not affect this
 			a = strlen(line); 
 	}
+
+	count = count - zeroCount; // deducts unnecessary zeroes counted from end of line
 
 	if (count > 4)
 		flag = 1;
