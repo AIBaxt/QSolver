@@ -14,25 +14,17 @@ int validate(char * line, int nline, double * a, double * b, double * c){
 	//A toupper function would be nice here
 	if(strncmp(line, "q", 1) == 0 || strncmp(line, "Q", 1) == 0){
 		error = 2; //User is requesting to exit
-		if (LOG == 1) 
-        printf("\nVALIDATE 18: RECEIVED 'Q'...\n");
 	}
 	else if(strncmp(line, "h", 1) == 0 || strncmp(line, "H", 1) == 0){
 		error = 3; //User is requesting help menu
-		if (LOG == 1) 
-        printf("\nVALIDATE 23: RECEIVED 'H'...\n");
 	}
 	else if(sscanf(line, "%lf %lf %lf", a, b, c) != 3){
 		error = 1; // Either no input or did not receive all 3 numbers
-		if (LOG == 1) 
-        printf("\nVALIDATE 28: RECEIVED INCORRECT INPUT...\n");
 	}
 	
 	
 	if (error == 0) // I have all three numbers, no issues so far
 	{
-		if (LOG == 1) 
-        printf("\nVALIDATE 35: ERROR = 0, ALL GOOD [%f, %f, %f]...\n", *a, *b, *c);
 		if (*a > FLT_MAX || *a < -FLT_MAX || *b > FLT_MAX || *b < -FLT_MAX || *c > FLT_MAX || *c < -FLT_MAX)
 			error = 4; // number not within FLT range
 
@@ -50,8 +42,6 @@ int validate(char * line, int nline, double * a, double * b, double * c){
 
 		if (CheckPrecision(line) == 1)
 			printf("\nWARNING: More than 4 digits.  Answers may not be as accurate due to rounding errors.\n\n");
-		if (LOG == 1) 
-        printf("\nVALIDATE 54: INPUT ERROR RECEIVED, 4-8...\n");
 	}
 
 	
