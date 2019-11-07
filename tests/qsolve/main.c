@@ -47,4 +47,15 @@ int main(){
     qsolve(0, 5, 4, &x1, &x2);
     nantest(__LINE__, x1);
     inftest(__LINE__, x2);
+
+
+    //more checks, should pass
+    qsolve(4.63, 28.11, 4.1, &x1, &x2);
+    dblcmp(__LINE__, x2, -5.9217355089063);
+    dblcmp(__LINE__, x1, -0.14953878914983);
+
+    qsolve(3e27, 6e33, 5e26, &x1, &x2);
+    dblcmp(__LINE__, x2, -1999999.9999999);
+    dblcmp(__LINE__, x1, -8.3202501915794e-8);
+
 }
