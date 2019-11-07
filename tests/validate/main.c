@@ -12,6 +12,7 @@ int main(){
     double a = 0;
     double b = 0;
     double c = 0;
+    
     //Empty asserts
     validate("hello", 20, &a, &b, &c);
     assert_empty(__LINE__, a);
