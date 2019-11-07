@@ -1,8 +1,6 @@
 #include <math.h>
 #include <stdio.h>
 
-extern int LOG;
-
 int qsolve(double a, double b, double c, double * x1, double * x2)
 {
     int error = 0;

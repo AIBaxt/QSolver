@@ -3,8 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-extern int LOG; 
-
 int getit(char * line, int nline){
 	int error = 0; 
 	int size = 0;

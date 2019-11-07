@@ -6,25 +6,28 @@
 #include "displays.h"
 #include "qsolve.h"
 
-int LOG = 0;
+FILE *file;
 
 int main(int argc, char *argv[]){
-    //LOGGING
-    //setup for retrieving input
-    int size = 20; //size isn't definite, not entirely sure what to set it to
+    file = fopen("log.txt", "w");
+    fprintf(file, "FILE: %s DATE: %s TIME: %s\n", __FILE__, __DATE__, __TIME__);
+    int size = 20; 
     char *line = malloc (sizeof (char*) * size);
     double a, b, c;
     double x1, x2;
     int errFlag1 = 0; // 0 for all clear, 1 for no input, 2 for exit, 3 for help menu
     int errFlag2 = 0;
+    int count = 1;
 
     initialDisplay();
 
     while(errFlag1 !=2)
-    {
+    {   
+        fprintf(file, "\nIteration: %d\n", count);
         loopDisplay();
 
         getit(line, size);
+        fprintf(file, "Input: %s", line);
         errFlag1 = (validate(line, size, &a, &b, &c));
 
 
@@ -37,10 +40,12 @@ int main(int argc, char *argv[]){
 
             if (errFlag2 == 1){
                 printf("Roots undefined: complex number\n");
+                fprintf(file, "Roots undefined: complex number\n");
             }
             else{
                 endDisplay(x1,x2);
             }
         }
+        count++;
     }
 }

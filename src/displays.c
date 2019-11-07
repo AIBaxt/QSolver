@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "qsolve.h"
 
+extern FILE *file;
+
 void initialDisplay()
 {
     printf("*****************************\n");
@@ -21,6 +23,7 @@ void loopDisplay()
 void endDisplay(double x1, double x2)
 {
     printf("\nThe roots are: [%e], [%e]\n", x1, x2);
+    fprintf(file, "The roots are: [%e], [%e]\n", x1, x2);
 }
 
 void DisplayHelp(){
@@ -35,24 +38,30 @@ void DisplayErrors(int errFlag1){
     switch (errFlag1){
         case 1:
             printf("ERROR: No command or a, b, and c in line received\n");
+            fprintf(file, "ERROR: No command or a, b, and c in line received\n");
             break;
         case 3:
             DisplayHelp();
             break;
         case 4:
             printf("ERROR: A, B, or C were not within the range of Float type\n");
+            fprintf(file, "ERROR: A, B, or C were not within the range of Float type\n");
             break;
         case 5:
             printf("ERROR: A, B, or C was infinite\n");
+            fprintf(file, "ERROR: A, B, or C was infinite\n");
             break;
         case 6:
             printf("ERROR: A, B, or C was nan\n");
+            fprintf(file, "ERROR: A, B, or C was nan\n");
             break;
         case 7:
             printf("ERROR: A, B, or C was subnormal\n");
+            fprintf(file, "ERROR: A, B, or C was subnormal\n");
             break;
         case 8:
             printf("ERROR: A was 0, not quadratic equation\n");
+            fprintf(file, "ERROR: A was 0, not quadratic equation\n");
             break;    
     }
 }

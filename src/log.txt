@@ -1,0 +1,20 @@
+FILE: qs.c DATE: Nov  7 2019 TIME: 05:58:59
+
+Iteration: 1
+Input: 1 2 3
+Roots undefined: complex number
+
+Iteration: 2
+Input: 1 23
+ERROR: No command or a, b, and c in line received
+
+Iteration: 3
+Input: 4 1 2
+Roots undefined: complex number
+
+Iteration: 4
+Input:  14
+ERROR: No command or a, b, and c in line received
+
+Iteration: 5
+Input: q

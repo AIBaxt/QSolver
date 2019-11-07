@@ -4,14 +4,13 @@
 #include <float.h>
 #include <math.h>
 
-extern int LOG;
+extern FILE *file;
 
 int CheckPrecision(char *line);
 int PrecisionCounter(char line[]);
 
 int validate(char * line, int nline, double * a, double * b, double * c){
 	int error = 0;
-	//A toupper function would be nice here
 	if(strncmp(line, "q", 1) == 0 || strncmp(line, "Q", 1) == 0){
 		error = 2; //User is requesting to exit
 	}
@@ -40,8 +39,11 @@ int validate(char * line, int nline, double * a, double * b, double * c){
 		if (*a == 0)
 			error = 8; // a is 0, not a legitimite quadratic formula
 
-		if (CheckPrecision(line) == 1)
+		if (CheckPrecision(line) == 1){
 			printf("\nWARNING: More than 4 digits.  Answers may not be as accurate due to rounding errors.\n\n");
+			fprintf(file, "\nWARNING: More than 4 digits.  Answers may not be as accurate due to rounding errors.\n\n");
+		}
+			
 	}
 
 	
