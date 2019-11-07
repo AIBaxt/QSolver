@@ -1,5 +1,4 @@
-IDE of choice: Visual Studio Code. VS Code is a lightweight IDE from Microsoft with extensions
-for C and C++ syntax. 
+IDE of choice: Visual Studio Code. VS Code is a lightweight IDE from Microsoft with extensions for C and C++ syntax. 
 
 General:
 	Avoid global variables as much as possible.

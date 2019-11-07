@@ -1,0 +1,5 @@
+FILE: main.c DATE: Nov  7 2019 TIME: 09:47:37
+
+LINE 28: x is not empty
+LINE 39: x is not NAN
+LINE 40: x is not INF

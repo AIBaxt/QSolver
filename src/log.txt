@@ -1,0 +1,68 @@
+FILE: qs.c DATE: Nov  7 2019 TIME: 09:49:38
+
+Iteration: 1
+Input: 1 2 1
+The roots are: [-1.000000e+00], [-1.000000e+00]
+
+Iteration: 2
+Input: -1 -2 -1
+The roots are: [-1.000000e+00], [-1.000000e+00]
+
+Iteration: 3
+Input: 1e38 2 1
+Roots undefined: complex number
+
+Iteration: 4
+Input: 2e38 2 1
+Roots undefined: complex number
+
+Iteration: 5
+Input: 4e38 2 1
+ERROR: A, B, or C were not within the range of Float type
+
+Iteration: 6
+Input: 1 2 1 scribblez
+The roots are: [-1.000000e+00], [-1.000000e+00]
+
+Iteration: 7
+Input: 1 2 1
+The roots are: [-1.000000e+00], [-1.000000e+00]
+
+Iteration: 8
+Input: sdksdlskdjfskdjfsldERROR: No command or a, b, and c in line received
+
+Iteration: 9
+Input: kfsjdsiejskdjoskdffERROR: No command or a, b, and c in line received
+
+Iteration: 10
+Input: jsodkfsdfskdfjsokdfERROR: No command or a, b, and c in line received
+
+Iteration: 11
+Input: djkdfjosdkfjsodfkdjERROR: No command or a, b, and c in line received
+
+Iteration: 12
+Input: fdkfjokdjosdkfjsodkERROR: No command or a, b, and c in line received
+
+Iteration: 13
+Input: fjkdjfosdkjfosdkfjsERROR: No command or a, b, and c in line received
+
+Iteration: 14
+Input: odkfjdkfjsokfjdkfjsERROR: No command or a, b, and c in line received
+
+Iteration: 15
+Input: odkfjdkfjsodkfjsodkERROR: No command or a, b, and c in line received
+
+Iteration: 16
+Input: fjsdkdj
+ERROR: No command or a, b, and c in line received
+
+Iteration: 17
+Input: 1 2 1
+The roots are: [-1.000000e+00], [-1.000000e+00]
+
+Iteration: 18
+Input: h
+The roots are: [-1.000000e+00], [-1.000000e+00]
+
+Iteration: 19
+Input: q

@@ -4,54 +4,46 @@
 #include <float.h>
 #include <math.h>
 
-extern int LOG;
+extern FILE *file;
 
 int CheckPrecision(char *line);
 int PrecisionCounter(char line[]);
 
 int validate(char * line, int nline, double * a, double * b, double * c){
 	int error = 0;
-	//A toupper function would be nice here
-	if(strncmp(line, "q", 1) == 0 || strncmp(line, "Q", 1) == 0){
+	if(strcmp(line, "q\n") == 0 || strcmp(line, "Q\n") == 0){
 		error = 2; //User is requesting to exit
-		if (LOG == 1) 
-        printf("\nVALIDATE 18: RECEIVED 'Q'...\n");
 	}
-	else if(strncmp(line, "h", 1) == 0 || strncmp(line, "H", 1) == 0){
+	else if(strcmp(line, "h\n") == 0 || strcmp(line, "H\n") == 0){
 		error = 3; //User is requesting help menu
-		if (LOG == 1) 
-        printf("\nVALIDATE 23: RECEIVED 'H'...\n");
 	}
 	else if(sscanf(line, "%lf %lf %lf", a, b, c) != 3){
 		error = 1; // Either no input or did not receive all 3 numbers
-		if (LOG == 1) 
-        printf("\nVALIDATE 28: RECEIVED INCORRECT INPUT...\n");
 	}
 	
 	
 	if (error == 0) // I have all three numbers, no issues so far
 	{
-		if (LOG == 1) 
-        printf("\nVALIDATE 35: ERROR = 0, ALL GOOD [%f, %f, %f]...\n", *a, *b, *c);
 		if (*a > FLT_MAX || *a < -FLT_MAX || *b > FLT_MAX || *b < -FLT_MAX || *c > FLT_MAX || *c < -FLT_MAX)
 			error = 4; // number not within FLT range
-
-		if (isinf(*a) || isinf(*b) || isinf(*c))
+		
+		else if (isinf(*a) || isinf(*b) || isinf(*c))
 			error = 5; // number is infinite
 
-		if (isnan(*a) || isnan(*b) || isnan(*c))
+		else if (isnan(*a) || isnan(*b) || isnan(*c))
 			error = 6; // number is nan
 
-		if (!((isnormal(*a) || *a == 0) && (isnormal(*b) || *b == 0) && (isnormal(*c) || *c == 0)))
+		else if (!((fabs(*a) > FLT_MIN || *a == 0) && (fabs(*b) > FLT_MIN || *b == 0) && (fabs(*c) > FLT_MIN || *c == 0)))
 			error = 7; // number is subnormal/denormal
 
-		if (*a == 0)
+		else if (*a == 0)
 			error = 8; // a is 0, not a legitimite quadratic formula
 
-		if (CheckPrecision(line) == 1)
+		if (CheckPrecision(line) == 1){
 			printf("\nWARNING: More than 4 digits.  Answers may not be as accurate due to rounding errors.\n\n");
-		if (LOG == 1) 
-        printf("\nVALIDATE 54: INPUT ERROR RECEIVED, 4-8...\n");
+			fprintf(file, "\nWARNING: More than 4 digits.  Answers may not be as accurate due to rounding errors.\n\n");
+		}
+		
 	}
 
 	
