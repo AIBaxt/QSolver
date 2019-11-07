@@ -11,10 +11,10 @@ int PrecisionCounter(char line[]);
 
 int validate(char * line, int nline, double * a, double * b, double * c){
 	int error = 0;
-	if(strncmp(line, "q", 1) == 0 || strncmp(line, "Q", 1) == 0){
+	if(strcmp(line, "q\n") == 0 || strcmp(line, "Q\n") == 0){
 		error = 2; //User is requesting to exit
 	}
-	else if(strncmp(line, "h", 1) == 0 || strncmp(line, "H", 1) == 0){
+	else if(strcmp(line, "h\n") == 0 || strcmp(line, "H\n") == 0){
 		error = 3; //User is requesting help menu
 	}
 	else if(sscanf(line, "%lf %lf %lf", a, b, c) != 3){
@@ -26,23 +26,24 @@ int validate(char * line, int nline, double * a, double * b, double * c){
 	{
 		if (*a > FLT_MAX || *a < -FLT_MAX || *b > FLT_MAX || *b < -FLT_MAX || *c > FLT_MAX || *c < -FLT_MAX)
 			error = 4; // number not within FLT range
-
-		if (isinf(*a) || isinf(*b) || isinf(*c))
+		
+		else if (isinf(*a) || isinf(*b) || isinf(*c))
 			error = 5; // number is infinite
 
-		if (isnan(*a) || isnan(*b) || isnan(*c))
+		else if (isnan(*a) || isnan(*b) || isnan(*c))
 			error = 6; // number is nan
 
-		if (!(isnormal(*a) && isnormal(*b) && isnormal(*c)))
+		else if (!(isnormal(*a) && isnormal(*b) && isnormal(*c)))
 			error = 7; // number is subnormal/denormal
 
-		if (*a == 0)
+		else if (*a == 0)
 			error = 8; // a is 0, not a legitimite quadratic formula
-
+/*
 		if (CheckPrecision(line) == 1){
 			printf("\nWARNING: More than 4 digits.  Answers may not be as accurate due to rounding errors.\n\n");
 			fprintf(file, "\nWARNING: More than 4 digits.  Answers may not be as accurate due to rounding errors.\n\n");
 		}
+		*/
 			
 	}
 

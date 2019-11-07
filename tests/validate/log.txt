@@ -1,0 +1,5 @@
+FILE: main.c DATE: Nov  7 2019 TIME: 07:56:33
+
+LINE 26: x is not empty
+LINE 37: x is not INF
+LINE 38: x is not INF
