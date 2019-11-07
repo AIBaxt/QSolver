@@ -1,0 +1,8 @@
+FILE: main.c DATE: Nov  7 2019: TIME: 04:42:55
+
+LINE 31: 0.500000 is not equal to 0.800000
+LINE 32: -3.000000 is not equal to -1.000000
+LINE 35: 2.302776 is not equal to 2.302576
+LINE 36: -1.302776 is not equal to -1.302716
+LINE 39: 0.600000 is not equal to 0.655500
+LINE 40: 0.200000 is not equal to 0.190000

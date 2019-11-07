@@ -1,0 +1,1 @@
+void dblcmp(int line, double x1, double realx1);
