@@ -11,3 +11,5 @@ dblcmp - A program for experimenting with comparision of two double numbers. Doe
 floatcmp - A program for experimenting with comparisons between two floating point numbers. Does not take user input.
 
 IEEE - Various IEEE-FP tests.
+
+cunit - A very simple test for asserting that two integers are equal or not equal.

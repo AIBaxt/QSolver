@@ -40,4 +40,11 @@ int main(){
     dblcmp(__LINE__, x2, 0.19);
 
     //NAN
+    qsolve(0, 1, -1, &x1, &x2);
+    nantest(__LINE__, x1);
+    inftest(__LINE__, x2);
+
+    qsolve(0, 5, 4, &x1, &x2);
+    nantest(__LINE__, x1);
+    inftest(__LINE__, x2);
 }
